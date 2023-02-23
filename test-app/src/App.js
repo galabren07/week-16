@@ -1,55 +1,55 @@
 // import logo from './logo.svg';
 // import './App.css';
-import { Link, Route, Routes } from "react-router-dom"
-
-// import { Link, Route, Routes } from "react-router-dom"
+import { Link, Route, Routes, useLocation } from "react-router-dom"
 import Home from "./pages/Home"
-import BookList from "./pages/BookList"
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-
-
+import { NotFound } from "./pages/NotFound"
+// import { BookRoutes } from "./BookRoutes"
+// import { Navbar } from "./pages/Navbar"
+import { BookList } from "./pages/BookList"
+import Contact from "./pages/Contact"
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import Button  from 'react-bootstrap/Button'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
+// import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import BookApi  from "./Data"
 
 function App() {
+  const location = useLocation()
   return (
     <>
-    <nav>
-      <ul>
-        <li> 
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/books">Books</Link>
-        </li>
-      </ul>
-    </nav>
+    <Container>
+     <nav>
+     
+        <ButtonGroup>
+        <Button variant="outline-secondary">
+          <Link to="/home">Home</Link>
+        </Button>
+        </ButtonGroup>
+      
+        <ButtonGroup>
+          <Button variant="outline-secondary">
+          <Link end to="/books">Books</Link>
+            </Button>
+            </ButtonGroup>
+       
+        <ButtonGroup>
+        <Button variant="outline-secondary">
+          <Link end to="/contact">Contact</Link>
+          </Button>
+          </ButtonGroup>
+     </nav>
+    {location.state}
      <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/books" element={<BookList />} />
+    <Route path="/home" element={<Home />} />
+    <Route path="/books/*" element={<BookList/>} />
+    <Route path="/contacts" element={<Contact/>} />
+    <Route path="*" element={<NotFound />} />
   </Routes>
+  </Container>
   </>
   )
  
 }
 
-export default App;
+export default App
