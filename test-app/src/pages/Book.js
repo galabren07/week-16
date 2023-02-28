@@ -1,5 +1,6 @@
 import React from "react";
-import BookApi  from "./data"
+import { Api }  from "./data.js"
+// import { BookList } from "./BookList";
 
 // import { BookList } from "./pages/BookList"
 
@@ -16,29 +17,30 @@ import BookApi  from "./data"
 // }
 
 export default class Book extends React.Component {
-  constructor (props){
+  constructor (props) {
+    console.log(props)
     super(props);
-    this.state={
+    this.state = {
       feedback: "",
       allFeedBack: []
 
     }
   }
    getFeedBack = async () => {
-  const feedBack= await BookApi.get ()
+  const feedBack= await Api.get ()
   }
   render() {
     return (
       <div className="container mt-4">
-        <h1 class="display-4 text-center"/>
-        <i class="fas fa-book-open text-primary"></i>
+        <h1 className="display-4 text-center"/>
+        <i className="fas fa-book-open text-primary"></i>
         <div className="card mb-4 bg-dark text-light p-3">
          <div className="card-body">
           <div className="row">
             <div className="col-6">
               <img
-              src={this.props.img}
-              alt="book img"
+              src={this.props.image}
+              alt="book image"
               className="mb-5 img-thumbnail"
               />
             </div>
@@ -46,13 +48,16 @@ export default class Book extends React.Component {
               <h2 className="mb-5">{this.props.data}</h2>
               <p className="mb-4">Title: {this.props.title}</p>
               <p className="mb-2 border-bottom">
-                  Published: {this.props.published   }
+                  Published: {this.props.published}
                 </p>
                 <p className="mb-2 border-bottom">
                   Genre: {this.props.genre}
                 </p>
                 <p className="mb-2 border-bottom">
-                  Rating: {this.props.author                                                                                                                                                                                                                   }
+                  Author: {this.props.author}                                                                                                                                                                                                                   }
+                </p>
+                <p className="mb-2 border-bottom">
+                  Description: {this.props.description}
                 </p>
                 <br />                                                
            
@@ -65,3 +70,38 @@ export default class Book extends React.Component {
     );
   }
 }
+
+// export const Book = (props) => {
+//   const { book, updateBook } = props;
+
+//   const deleteRoom = (roomId) => {
+//       const updatedBook ={
+//           ...Book,
+//           rooms: Book.rooms.filter((x) => x._id !== roomId)
+//       };
+//     updateBook(updatedBook);  
+//   }
+
+//   const addNewRoom = (room) => updateBook({ ...book, rooms: [...house.rooms, room]});
+
+//   const rooms = () => (
+//       <ul>
+//           {BookList.rooms.map((room, index) => (
+//               <li key={index}>
+//                   <label> {`${room.name} Area: ${room.area}`}</label>
+//                   <button onClick={(e) => deleteRoom(room._id)}>Delete</button>
+//               </li>
+//           ))}
+//       </ul>
+//   );
+
+//   return (
+//       <div>
+//        <h1>{book.name}</h1>
+//        {
+//           rooms({ rooms, bookId: book._id, deleteRoom})
+//        }
+//        {/* <NewRoomForm addNewRoom={addNewRoom} /> */}
+//       </div>
+//   );
+//   };

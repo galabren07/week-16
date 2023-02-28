@@ -6,6 +6,7 @@ class BookApi {
         try {
           const response = await fetch(url); //await waits for the response to be received before moving to next line
           const data = await response.json(); //await and then convert the response to json
+          console.log(data)
           return data; //returning data
         } catch (error) {
           //if error, return error
@@ -13,4 +14,4 @@ class BookApi {
         }
       };
 }
-export default api = new BookApi()
+export const Api = new BookApi()

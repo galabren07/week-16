@@ -1,12 +1,12 @@
 import React from "react-router-dom"
 
 
-const Contact = () => {
+const FeedBack = () => {
     return (
     <section className='hero'>
-        <h1>welcome to Contact Page</h1>
+        <h1>welcome to FeedBack Page</h1>
     </section>
     )
 }
 
-export default Contact
+export default FeedBack
