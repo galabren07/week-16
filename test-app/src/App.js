@@ -12,7 +12,9 @@ import Button  from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 // import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
-// import BookApi  from "./data"// 
+
+import "./App.css"
+
 
 function App() {
   const location = useLocation()
